@@ -1,6 +1,9 @@
 // Librería para imprimir texto coloreado.
-// El propósito de esta librería es contener una serie de funciones que permitan 
-// imprimir un texto pasado como argumento utilizando un color.
+// El propósito de esta librería es contener un método para permitir imprimir 
+// un texto pasado como argumento utilizando un color.
+
+// La idea sería también permitir que dicho texto pueda ser imprimido en cursiva
+// o negritas si fuese deseado.
 
 void red_text(char* text) {
   printf("\x1b[31m%s\n", text);
