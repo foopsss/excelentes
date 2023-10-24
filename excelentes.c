@@ -1,6 +1,6 @@
 #include <stdio.h>
+#include "coloured-text.h"
 
 int main() {
-  printf("ExCelentes.");
   return 0;
 }
