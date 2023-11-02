@@ -1,0 +1,70 @@
+Acción TrabajoC ES
+
+Ambiente
+
+	Lugares = Registro
+		Nombre: AN(100)
+		Votos: N(2)
+	Fin Registro
+
+	resguardo: Lugares
+
+	destinos: arr de [1..5] de Lugares
+	i, elección: entero
+	bandera: lógico
+	
+	Procedimiento MostrarOpciones() ES
+		Escribir("Elija uno de los destinos: ")
+		Escribir("1. Mar del Plata")
+		Escribir("2. Rio de Janeiro")
+		Escribir("3. Buzios")
+		Escribir("4. Cuba")
+		Escribir("5. Santo Domingo")
+		Escribir("6. SALIR")
+		Escribir("Introduzca su elección: ")
+		Leer(elección)
+	Fin Procedimiento
+
+Proceso
+
+	// Cargamos los datos necesarios del arreglo de entrada.
+	destinos[1].Nombre := Mar del Plata
+	destinos[2].Nombre := Rio de Janeiro
+	destinos[3].Nombre := Buzios
+	destinos[4].Nombre := Cuba
+	destinos[5].Nombre := Santo Domingo
+	
+	Para i := 1 hasta 5 Hacer
+		destinos[i].Voto := 0
+	Fin Para
+	
+	// Le pedimos a los usuarios que ingresen sus elecciones.
+	MostrarOpciones()
+	
+	Mientras elección <> 6 Hacer
+		destinos[elección].Voto := destinos[elección].Voto + 1
+		
+		MostrarOpciones()
+	Fin Mientras
+	
+	// Ordenamos el arreglo con los datos.
+	bandera := F
+	Mientras (bandera = F) Hacer
+		bandera := V
+		Para i := 1 hasta 4 Hacer
+			Si (destinos[i].Votos < destinos[i + 1].Votos) Entonces
+				resguardo := destinos[i]
+				destinos[i] := destinos[i + 1]
+				destinos[i + 1] := resguardo
+				bandera := F
+			Fin Si
+		Fin Para
+	Fin Mientras
+	
+	Escribir("Ranking de sitios más votados: ")
+	Para i := 1 hasta 5 Hacer
+		Escribir(destinos[i].Nombre)
+		Escribir(destinos[i].Votos)
+	Fin Para
+
+Fin Acción
