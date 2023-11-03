@@ -3,14 +3,14 @@ Acción TrabajoC ES
 Ambiente
 
 	Lugares = Registro
-		Nombre: AN(100)
-		Votos: N(2)
+		nombre: AN(100)
+		votos: N(2)
 	Fin Registro
 
 	resguardo: Lugares
 
 	destinos: arr de [1..5] de Lugares
-	i, elección: entero
+	i, elección, cantidadvotos: entero
 	bandera: lógico
 	
 	Procedimiento MostrarOpciones() ES
@@ -23,36 +23,47 @@ Ambiente
 		Escribir("6. SALIR")
 		Escribir("Introduzca su elección: ")
 		Leer(elección)
+
+		Si (eleccion > 5) o (eleccion < 0) Entonces
+			Escribir("Usted seleccionó una opción incorrecta.")
+			Escribir("Por favor, seleccione una opción correcta.")
+			MostrarOpciones()
+		Fin Si
 	Fin Procedimiento
 
 Proceso
 
-	// Cargamos los datos necesarios del arreglo de entrada.
-	destinos[1].Nombre := Mar del Plata
-	destinos[2].Nombre := Rio de Janeiro
-	destinos[3].Nombre := Buzios
-	destinos[4].Nombre := Cuba
-	destinos[5].Nombre := Santo Domingo
+	cantidadvotos := 0
+	bandera := F
+
+	// Cargamos los datos necesarios para nuestro arreglo de entrada.
+    	// También ponemos a cero los campos numéricos del arreglo y el resguardo.
+	destinos[1].nombre := Mar del Plata
+	destinos[2].nombre := Rio de Janeiro
+	destinos[3].nombre := Buzios
+	destinos[4].nombre := Cuba
+	destinos[5].nombre := Santo Domingo
+	resguardo.votos := 0
 	
 	Para i := 1 hasta 5 Hacer
-		destinos[i].Voto := 0
+		destinos[i].votos := 0
 	Fin Para
 	
-	// Le pedimos a los usuarios que ingresen sus elecciones.
+	// Le ofrecemos a los usuarios la posibilidad de votar.
 	MostrarOpciones()
 	
 	Mientras elección <> 6 Hacer
 		destinos[elección].Voto := destinos[elección].Voto + 1
-		
+		cantidadvotos := cantidadvotos + 1
 		MostrarOpciones()
 	Fin Mientras
 	
-	// Ordenamos el arreglo con los datos.
-	bandera := F
+	// Con la votación consumada, reordenamos el arreglo en función de los
+	// lugares más votados, de mayor a menor.
 	Mientras (bandera = F) Hacer
 		bandera := V
 		Para i := 1 hasta 4 Hacer
-			Si (destinos[i].Votos < destinos[i + 1].Votos) Entonces
+			Si (destinos[i].votos < destinos[i + 1].votos) Entonces
 				resguardo := destinos[i]
 				destinos[i] := destinos[i + 1]
 				destinos[i + 1] := resguardo
@@ -61,10 +72,13 @@ Proceso
 		Fin Para
 	Fin Mientras
 	
-	Escribir("Ranking de sitios más votados: ")
-	Para i := 1 hasta 5 Hacer
-		Escribir(destinos[i].Nombre)
-		Escribir(destinos[i].Votos)
-	Fin Para
+	// Mostramos el ranking luego de ordenar el arreglo con los votos.
+	Si (cantidadvotos > 0) Entonces
+		Escribir("Ranking de sitios más votados: ")
+		Para i := 1 hasta 5 Hacer
+			Escribir(destinos[i].nombre)
+			Escribir(destinos[i].votos)
+		Fin Para
+	Fin Si
 
 Fin Acción

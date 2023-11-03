@@ -41,7 +41,7 @@ void main() {
     bool bandera = false;
     
     // Cargamos los nombres de las ubicaciones en nuestro arreglo.
-    // También ponemos a cero el resguardo que vamos a utiliza más adelante.
+    // También ponemos a cero el resguardo que vamos a utilizar más adelante.
     destinos[0].nombre = "Mar del Plata";
     destinos[1].nombre = "Rio de Janeiro";
     destinos[2].nombre = "Buzios";
