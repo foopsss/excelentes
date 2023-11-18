@@ -20,14 +20,14 @@ void MostrarOpciones() {
     printf("4. Santo Domingo.\n");
     printf("5. SALIR.\n");
     printf("\n");
-    printf("Introduzca su elección: ");
+    printf("Introduzca su eleccion: ");
     scanf("%d", &eleccion);
     
     // Chequeamos que los valores se encuentren dentro del rango aceptable.
     if (eleccion > 5 || eleccion < 0) {
 	clrscr();
-	printf("Usted seleccionó una opción incorrecta.\n");
-	printf("Por favor, seleccione una opción correcta.\n");
+	printf("Usted selecciono una opcion incorrecta.\n");
+	printf("Por favor, seleccione una opcion correcta.\n");
 	printf("\n");
 	MostrarOpciones();
     }
@@ -77,13 +77,13 @@ void main() {
 
     if (cantidadvotos > 0) {
 	clrscr();
-	printf("Ranking de los sitios más votados: \n");
+	printf("Ranking de los sitios mas votados: \n");
 	printf("\n");
 	for (i = 0; i < 5; i++) {
 	    printf("%s: %d\n", destinos[i].nombre, destinos[i].votos);
 	}
-    }
 
-    printf("\n");
-    presskey();
+	printf("\n");
+	presskey();
+    }
 }
