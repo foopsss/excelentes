@@ -1,7 +1,6 @@
 // Librería para almacenar funciones de usos varios.
-// Actualmente, la única función disponible es clrscr(), que contiene dos
-// condicionales para controlar el uso de métodos de limpieza de pantalla según
-// el sistema operativo que se use.
+// clrscr: sirve para limpiar el contenido de la pantalla.
+// presskey: simula el comportamiento del ReadKey() de Pascal.
 
 void clrscr() {
     #ifdef _WIN32
@@ -11,4 +10,13 @@ void clrscr() {
     #ifdef linux
     system("clear");
     #endif
+}
+
+void presskey() {
+    // Limpiamos el buffer de entrada.
+    getchar();
+
+    // Simulamos un ReadKey().
+    printf("Presione una tecla para salir.");
+    getchar();
 }

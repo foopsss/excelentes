@@ -83,4 +83,7 @@ void main() {
 	    printf("%s: %d\n", destinos[i].nombre, destinos[i].votos);
 	}
     }
+
+    printf("\n");
+    presskey();
 }
