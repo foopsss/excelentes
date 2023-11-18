@@ -39,8 +39,8 @@ void main() {
     int i, cantidadvotos;
     bool bandera = false;
     
-    // Cargamos los nombres de las ubicaciones en nuestro arreglo.
-    // También ponemos a cero el resguardo que vamos a utilizar más adelante.
+    cantidadvotos = 0;
+
     destinos[0].nombre = "Mar del Plata";
     destinos[1].nombre = "Rio de Janeiro";
     destinos[2].nombre = "Buzios";
@@ -61,7 +61,7 @@ void main() {
 	MostrarOpciones();
     }
 
-    // Reordenamos el arreglo en función de los lugares más votados, de mayor a menor.
+    // Reordenamos el arreglo en función de los lugares más votados de mayor a menor.
     while (!bandera) {
 	bandera = true;
 	
@@ -77,6 +77,7 @@ void main() {
 
     if (cantidadvotos > 0) {
 	clrscr();
+
 	printf("Ranking de los sitios mas votados: \n");
 	printf("\n");
 	for (i = 0; i < 5; i++) {
