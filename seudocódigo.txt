@@ -58,22 +58,22 @@ Proceso
 		MostrarOpciones()
 	Fin Mientras
 	
-	// Con la votación consumada, reordenamos el arreglo en función de los
-	// lugares más votados, de mayor a menor.
-	Mientras (bandera = F) Hacer
-		bandera := V
-		Para i := 1 hasta 4 Hacer
-			Si (destinos[i].votos < destinos[i + 1].votos) Entonces
-				resguardo := destinos[i]
-				destinos[i] := destinos[i + 1]
-				destinos[i + 1] := resguardo
-				bandera := F
-			Fin Si
-		Fin Para
-	Fin Mientras
-	
-	// Mostramos el ranking luego de ordenar el arreglo con los votos.
 	Si (cantidadvotos > 0) Entonces
+		// Con la votación consumada, reordenamos el arreglo en función de los
+		// lugares más votados, de mayor a menor.
+		Mientras (bandera = F) Hacer
+			bandera := V
+			Para i := 1 hasta 4 Hacer
+				Si (destinos[i].votos < destinos[i + 1].votos) Entonces
+					resguardo := destinos[i]
+					destinos[i] := destinos[i + 1]
+					destinos[i + 1] := resguardo
+					bandera := F
+				Fin Si
+			Fin Para
+		Fin Mientras
+	
+		// Mostramos el ranking luego de ordenar el arreglo con los votos.
 		Escribir("Ranking de sitios más votados: ")
 		Para i := 1 hasta 5 Hacer
 			Escribir(destinos[i].nombre)
