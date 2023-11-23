@@ -9,31 +9,7 @@ struct lugares {
     int votos;
 };
 
-int eleccion;
-
-void MostrarOpciones() {
-    printf("Elija una de las opciones: \n");
-    printf("0. Mar del Plata.\n");
-    printf("1. Rio de Janeiro.\n");
-    printf("2. Buzios.\n");
-    printf("3. Cuba.\n");
-    printf("4. Santo Domingo.\n");
-    printf("5. SALIR.\n");
-    printf("\n");
-    printf("Introduzca su eleccion: ");
-    scanf("%d", &eleccion);
-    
-    // Chequeamos que los valores se encuentren dentro del rango aceptable.
-    if (eleccion > 5 || eleccion < 0) {
-	clrscr();
-	printf("Usted selecciono una opcion incorrecta.\n");
-	printf("Por favor, seleccione una opcion correcta.\n");
-	printf("\n");
-	MostrarOpciones();
-    }
-}
-
-void main() {
+int main() {
     struct lugares destinos[5];
     struct lugares resguardo;
     int i, cantidadvotos;
@@ -87,4 +63,6 @@ void main() {
 	printf("\n");
 	presskey();
     }
+
+    return 0;
 }
