@@ -37,21 +37,22 @@ int main() {
 	MostrarOpciones();
     }
 
-    // Reordenamos el arreglo en función de los lugares más votados de mayor a menor.
-    while (!bandera) {
-	bandera = true;
-	
-	for (i = 0; i < 4; i++) {
-	    if (destinos[i].votos < destinos[i + 1].votos) {
-		resguardo = destinos[i];
-		destinos[i] = destinos[i + 1];
-		destinos[i + 1] = resguardo;
-		bandera = false;
-	    }
-	}
-    }
-
     if (cantidadvotos > 0) {
+        // Reordenamos el arreglo en función de los lugares más votados de mayor a menor.
+        while (!bandera) {
+	    bandera = true;
+	    
+	    for (i = 0; i < 4; i++) {
+	        if (destinos[i].votos < destinos[i + 1].votos) {
+		    resguardo = destinos[i];
+		    destinos[i] = destinos[i + 1];
+		    destinos[i + 1] = resguardo;
+		    bandera = false;
+	        }
+	    }
+        }
+
+        // Mostramos el ranking de sitios.
 	clrscr();
 
 	printf("Ranking de los sitios mas votados: \n");
