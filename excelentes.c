@@ -9,31 +9,7 @@ struct lugares {
     int votos;
 };
 
-int eleccion;
-
-void MostrarOpciones() {
-    printf("Elija una de las opciones: \n");
-    printf("0. Mar del Plata.\n");
-    printf("1. Rio de Janeiro.\n");
-    printf("2. Buzios.\n");
-    printf("3. Cuba.\n");
-    printf("4. Santo Domingo.\n");
-    printf("5. SALIR.\n");
-    printf("\n");
-    printf("Introduzca su eleccion: ");
-    scanf("%d", &eleccion);
-    
-    // Chequeamos que los valores se encuentren dentro del rango aceptable.
-    if (eleccion > 5 || eleccion < 0) {
-	clrscr();
-	printf("Usted selecciono una opcion incorrecta.\n");
-	printf("Por favor, seleccione una opcion correcta.\n");
-	printf("\n");
-	MostrarOpciones();
-    }
-}
-
-void main() {
+int main() {
     struct lugares destinos[5];
     struct lugares resguardo;
     int i, cantidadvotos;
@@ -61,21 +37,22 @@ void main() {
 	MostrarOpciones();
     }
 
-    // Reordenamos el arreglo en función de los lugares más votados de mayor a menor.
-    while (!bandera) {
-	bandera = true;
-	
-	for (i = 0; i < 4; i++) {
-	    if (destinos[i].votos < destinos[i + 1].votos) {
-		resguardo = destinos[i];
-		destinos[i] = destinos[i + 1];
-		destinos[i + 1] = resguardo;
-		bandera = false;
-	    }
-	}
-    }
-
     if (cantidadvotos > 0) {
+        // Reordenamos el arreglo en función de los lugares más votados de mayor a menor.
+        while (!bandera) {
+	    bandera = true;
+	    
+	    for (i = 0; i < 4; i++) {
+	        if (destinos[i].votos < destinos[i + 1].votos) {
+		    resguardo = destinos[i];
+		    destinos[i] = destinos[i + 1];
+		    destinos[i + 1] = resguardo;
+		    bandera = false;
+	        }
+	    }
+        }
+
+        // Mostramos el ranking de sitios.
 	clrscr();
 
 	printf("Ranking de los sitios mas votados: \n");
@@ -87,4 +64,6 @@ void main() {
 	printf("\n");
 	presskey();
     }
+
+    return 0;
 }
